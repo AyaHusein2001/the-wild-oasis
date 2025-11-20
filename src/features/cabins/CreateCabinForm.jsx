@@ -38,7 +38,7 @@ function CreateCabinForm() {
   console.log("🚀 ~ CreateCabinForm ~ errors:", errors);
   const onSubmit = (data) => {
     console.log("🚀 ~ onSubmit ~ data:", data);
-    mutate({...data, image: data.image[0]});
+    mutate({ ...data, image: data.image[0] });
   };
 
   const onError = (errors) => {
@@ -99,7 +99,7 @@ function CreateCabinForm() {
           {...register("discount", {
             required: "This field is required",
             validate: (value) =>
-              value <= getValues().regularPrice ||
+              Number(value) <= Number(getValues().regularPrice) ||
               "Discount should be less than regularPrice",
           })}
         />
