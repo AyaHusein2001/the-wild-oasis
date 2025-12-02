@@ -19,24 +19,14 @@ const CabinTable = () => {
     filteredCabins = cabins.filter((cabin) => cabin.discount > 0);
   }
 
-// 2 - Sort
-const sortBy = searchParams[0].get("sortBy") || "name-asc";
-const [field, direction] = sortBy.split("-");
-const modifier = direction === "asc" ? 1 : -1;
+  // 2 - Sort
+  const sortBy = searchParams[0].get("sortBy") || "name-asc";
+  const [field, direction] = sortBy.split("-");
+  const modifier = direction === "asc" ? 1 : -1;
+  const sortedCabins = [...filteredCabins].sort(
+    (a, b) => (a[field] - b[field]) * modifier
+  );
 
-const sortedCabins = [...filteredCabins].sort((a, b) => {
-  const aVal = a[field];
-  const bVal = b[field];
-
-  if (typeof aVal === "string") {
-    return aVal.localeCompare(bVal) * modifier;
-  }
-
-  return (aVal - bVal) * modifier;
-});
-
-
-  console.log("🚀 ~ CabinTable ~ filterValue:", filterValue);
   return (
     <Menus>
       <Table columns="0.6fr 1.8fr 2.2fr 1fr 1fr 1fr" role="table">
@@ -51,7 +41,7 @@ const sortedCabins = [...filteredCabins].sort((a, b) => {
 
         <Table.Body
           data={sortedCabins}
-          render={(cabin) => <CabinRow cabin={cabin} />}
+          render={(cabin) => <CabinRow key={cabin.id} cabin={cabin} />}
         />
       </Table>
     </Menus>

@@ -18,10 +18,10 @@ const CabinTableOperations = () => {
         options={[
           { value: "name-asc", label: "Sort by Name (A-Z)" },
           { value: "name-desc", label: "Sort by Name (Z-A)" },
-          { value: "price-asc", label: "Sort by Price (Low first)" },
-          { value: "price-desc", label: "Sort by Price (High first)" },
-          { value: "capacity-asc", label: "Sort by Capacity (Low first)" },
-          { value: "capacity-desc", label: "Sort by Capacity (High first)" },
+          { value: "regularPrice-asc", label: "Sort by Price (Low first)" },
+          { value: "regularPrice-desc", label: "Sort by Price (High first)" },
+          { value: "maxCapacity-asc", label: "Sort by Capacity (Low first)" },
+          { value: "maxCapacity-desc", label: "Sort by Capacity (High first)" },
         ]}
       />
     </TableOperations>
