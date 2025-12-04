@@ -25,15 +25,15 @@ const GlobalStyles = createGlobalStyle`
   --color-grey-800: #1f2937;
   --color-grey-900: #111827;
 
-  --color-blue-100: #e0f2fe;
+  --color-blue-100: #88b5d3ff;
   --color-blue-700: #0369a1;
-  --color-green-100: #dcfce7;
+  --color-green-100: #80dba0ff;
   --color-green-700: #15803d;
-  --color-yellow-100: #fef9c3;
+  --color-yellow-100: #f7eb6cff;
   --color-yellow-700: #a16207;
-  --color-silver-100: #e5e7eb;
+  --color-silver-100: #8f9cb8ff;
   --color-silver-700: #374151;
-  --color-indigo-100: #e0e7ff;
+  --color-indigo-100: #596ca8ff;
   --color-indigo-700: #4338ca;
 
   --color-red-100: #fee2e2;
