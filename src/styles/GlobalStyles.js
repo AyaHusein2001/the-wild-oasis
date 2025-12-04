@@ -13,7 +13,7 @@ const GlobalStyles = createGlobalStyle`
   --color-brand-900: #312e81;
 
   /* Grey */
-  --color-grey-0: #d8d7e2ff;
+  --color-grey-0: #ffffffff;
   --color-grey-50: #f9fafb;
   --color-grey-100: #f3f4f6;
   --color-grey-200: #e5e7eb;
