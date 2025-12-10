@@ -16,7 +16,6 @@ function UpdatePasswordForm() {
   }
 
   function handleReset(e) {
-    // e.preventDefault();
     reset();
   }
 

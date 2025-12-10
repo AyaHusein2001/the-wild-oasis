@@ -1,56 +1,57 @@
 import {
+  HiOutlineBanknotes,
   HiOutlineBriefcase,
   HiOutlineCalendarDays,
-  HiOutlineBanknotes,
   HiOutlineChartBar,
-} from 'react-icons/hi2';
-import { formatCurrency } from 'utils/helpers';
-import Stat from './Stat';
+} from "react-icons/hi2";
+import Stat from "./Stat";
+import { formatCurrency } from "../../utils/helpers";
 
-function Stats({ bookings, confirmedStays, numDays, cabinCount }) {
+const Stats = ({ bookings, confirmedStays, numDays,cabinCount }) => {
   // Stat 1)
   const numBookings = bookings.length;
 
   // Stat 2)
-  const sales = bookings.reduce((acc, cur) => acc + cur.totalPrice, 0);
+  const sales = bookings.reduce((acc, booking) => acc + booking.totalPrice, 0);
 
-  // Stat 3)
+  // stat 3)
   const checkins = confirmedStays.length;
 
-  // Stat 4)
-  // We will use a trick to calculate occupancy rate. It's not 100% accurate, but we want to keep it simple. We know we can have a total of 'numDays * cabinCount' days to occupy, and we also know how many days were actually booked. From this, we can compute the percentage
-  const occupation =
-    confirmedStays.reduce((acc, cur) => acc + cur.numNights, 0) /
-    (numDays * cabinCount);
+  // stat 4)
+  //num checkedInNights / all available nights(numDays*numCabins => num of days that we could have sold)
+  const occupation = confirmedStays.reduce(
+    (acc, stay) => acc + stay.numNights,
+    0
+  )/(numDays*cabinCount);
 
   return (
     <>
       <Stat
-        icon={<HiOutlineBriefcase />}
-        title='Bookings'
+        title="Bookings"
         value={numBookings}
-        color='blue'
+        color="blue"
+        icon={<HiOutlineBriefcase />}
       />
       <Stat
-        icon={<HiOutlineBanknotes />}
-        title='Sales'
+        title="Sales"
         value={formatCurrency(sales)}
-        color='green'
+        color="green"
+        icon={<HiOutlineBanknotes />}
       />
       <Stat
-        icon={<HiOutlineCalendarDays />}
-        title='Check ins'
+        title="Check ins"
         value={checkins}
-        color='indigo'
+        color="indigo"
+        icon={<HiOutlineCalendarDays />}
       />
       <Stat
+        title="Occupancy rate"
+        value={Math.round(occupation * 100) + "%"}
+        color="yellow"
         icon={<HiOutlineChartBar />}
-        title='Occupancy rate'
-        value={Math.round(occupation * 100) + '%'}
-        color='yellow'
       />
     </>
   );
-}
+};
 
 export default Stats;
