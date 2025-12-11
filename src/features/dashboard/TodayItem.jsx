@@ -1,15 +1,14 @@
-import CheckoutButton from 'features/check-in-out/CheckoutButton';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
-import Button from 'ui/Button';
-import { Flag } from 'ui/Flag';
-import Tag from 'ui/Tag';
+import CheckoutButton from "../check-in-out/CheckoutButton";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+import Button from "../../ui/Button";
+import { Flag } from "../../ui/Flag";
+import Tag from "../../ui/Tag";
 
 const StyledTodayItem = styled.li`
-  display: grid;
-  grid-template-columns: 9rem 2rem 1fr 7rem 9rem;
-  gap: 1.2rem;
+  display: flex;
   align-items: center;
+  justify-content: space-between;
 
   font-size: 1.4rem;
   padding: 0.8rem 0;
@@ -32,12 +31,12 @@ function TodayItem({ stay }) {
 
   const statusToAction = {
     unconfirmed: {
-      action: 'arriving',
-      tag: 'green',
+      action: "arriving",
+      tag: "green",
       button: (
         <Button
-          variation='primary'
-          size='small'
+          variation="primary"
+          size="small"
           as={Link}
           to={`/checkin/${id}`}
         >
@@ -45,9 +44,9 @@ function TodayItem({ stay }) {
         </Button>
       ),
     },
-    'checked-in': {
-      action: 'departing',
-      tag: 'blue',
+    "checked-in": {
+      action: "departing",
+      tag: "blue",
       button: <CheckoutButton bookingId={id} />,
     },
   };
@@ -57,7 +56,7 @@ function TodayItem({ stay }) {
       <Tag type={statusToAction[status].tag}>
         {statusToAction[status].action}
       </Tag>
-      <Flag src={guests.countryFlag} alt={`Flag of ${guests.country}`} />
+      {/* <Flag src={guests.countryFlag} alt={`Flag of ${guests.country}`} /> */}
       <Guest>{guests.fullName}</Guest>
       <div>{numNights} nights</div>
 
