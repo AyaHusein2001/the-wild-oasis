@@ -84,19 +84,19 @@ function Menus({ children }) {
 function Toggle({ id }) {
   const { openId, close, open, setPosition } = useContext(MenusContext);
   function handleClick(e) {
+    e.stopPropagation();
     const rect = e.target.closest("button").getBoundingClientRect();
     console.log("🚀 ~ handleClick ~ rect:", rect);
     setPosition({
       x: window.innerWidth - rect.width - rect.x,
       y: rect.y + rect.height + 8,
     });
-    if (openId === id){
-       close()
+    if (openId === id) {
+      close();
+    } else {
+      console.log(id);
+      open(id);
     }
-    else {
-      console.log(id)
-      open(id)
-    };
   }
   return (
     <Menu>
@@ -110,7 +110,7 @@ function Toggle({ id }) {
 
 function List({ id, children }) {
   const { openId, position, close } = useContext(MenusContext);
-  const ref = useOutSideClick(close, true);
+  const ref = useOutSideClick(close, false);
 
   if (openId !== id) return null;
   return createPortal(

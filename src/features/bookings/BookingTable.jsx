@@ -1,10 +1,7 @@
-// import styled from 'styled-components';
-
 import Spinner from "../../ui/Spinner";
 import Table from "../../ui/Table";
 import { useBookings } from "./useBookings";
 import Menus from "../../ui/Menus";
-// import Pagination from '../../ui/Pagination';
 import Empty from "../../ui/Empty";
 import BookingRow from "./BookingRow";
 import Pagination from "../../ui/Pagination";
@@ -15,8 +12,6 @@ function BookingTable() {
   if (isLoading) return <Spinner />;
   if (!bookings) return <Empty resource={"bookings"} />;
 
-  // VIDEO stupid JS bug, just an example of course
-  // null.toUpperCase();
 
   return (
     <Menus>
@@ -45,7 +40,5 @@ function BookingTable() {
   );
 }
 
-// We could create yet another layer of abstraction on top of this. We could call this component just <Results>, like: Results({data, count, isLoading, columns, rowComponent}). Then <BookingTable> and ALL other tables would simply call that.
-// BUT, creating more abstractions also has a cost! More things to remember, more complex codebase to understand. Sometimes it's okay to just copy and paste instead of creating abstractions
 
 export default BookingTable;
